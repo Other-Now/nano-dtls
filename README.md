@@ -3,8 +3,10 @@
 A from-scratch, zero-copy **DTLS 1.3** stack (RFC 9147, sharing the TLS 1.3
 handshake/key-schedule core of RFC 8446) in portable **C11**, built as a
 low-latency/zero-allocation hot path and sized for an embedded/RTOS target.
-The name is a deliberate nod to DigiCert's NanoSSL — that's the exact thing
-this mimics. Full build plan and milestone checklist: [PLAN.md](PLAN.md).
+The name is a deliberate nod to the compact embedded TLS/DTLS SDKs shipped
+by security vendors for resource-constrained targets — that's the exact
+class of product this mimics. Full build plan and milestone checklist:
+[PLAN.md](PLAN.md).
 
 ## Why DTLS, and why one project for two audiences
 

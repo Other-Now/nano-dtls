@@ -3,12 +3,14 @@
 A from-scratch, zero-copy **DTLS 1.3** stack (RFC 9147, sharing the TLS 1.3
 handshake/key-schedule core of RFC 8446) in portable **C11**, engineered as a
 low-latency / zero-allocation hot path and sized for an embedded/RTOS target.
-The name is a deliberate nod to DigiCert's NanoSSL — that's the exact thing
-this mimics.
+The name is a deliberate nod to the compact embedded TLS/DTLS SDKs shipped
+by security vendors for resource-constrained targets — that's the exact
+class of product this mimics.
 
-Target readers: a low-latency C++/HFT panel *and* a DigiCert/TrustCore-style
-embedded-security panel, from the same repo. See "Why one project covers
-both lanes" below — that's the whole thesis of this build.
+Target readers: a low-latency C++/HFT panel *and* an embedded-security
+panel (the kind that reviews compact embedded TLS/DTLS SDKs), from the
+same repo. See "Why one project covers both lanes" below — that's the
+whole thesis of this build.
 
 ---
 
@@ -37,11 +39,12 @@ both lanes" below — that's the whole thesis of this build.
   cache-conscious layout, nanosecond-level per-record latency benchmarked
   against OpenSSL, sequence/replay-window handling, deterministic behavior —
   existing strengths, restated in a networking-security context.
-- **The DigiCert/TrustCore reviewer sees:** a cryptographic + networking
+- **An embedded-security reviewer sees:** a cryptographic + networking
   protocol implemented in C, on a resource-constrained target, with
   constant-time crypto, secure-coding discipline (fuzzing + static analysis),
   X.509 cert-chain verification (the PKI touch), and a hybrid post-quantum
-  key exchange — i.e. NanoSSL/NanoCrypto's actual job description.
+  key exchange — i.e. exactly what a compact embedded TLS/crypto SDK has
+  to do.
 
 "Constant RAM, no malloc on the hot path" is simultaneously a low-latency
 claim *and* an embedded claim — that line does double duty throughout.
@@ -254,7 +257,7 @@ network stack).
 Capture both in every stage's benchmark output so the one repo speaks to
 both audiences.
 
-## 4. Validation & secure coding (the DigiCert differentiator) ✅
+## 4. Validation & secure coding (the embedded-security differentiator) ✅
 
 - **Known-answer tests** against RFC 8448 traces — bit-exact key derivation. ✅
 - **Interop**: real two-process/two-thread same-machine interop over actual
